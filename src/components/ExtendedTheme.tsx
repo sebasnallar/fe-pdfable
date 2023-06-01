@@ -15,7 +15,7 @@ const theme = extendTheme({
       textShadow: '0 0 80px rgba(192, 219, 255, 0.35), 0 0 32px rgba(65, 120, 255, 0.24)',
     },
     gradient: {
-      bgGradient: 'linear(to-r, pink.500, purple.500)', // Updated to pink
+      bgGradient: 'linear(to-r, pink.500, purple.500)',
       bgClip: 'text',
     },
   },
