@@ -1,1 +1,1 @@
-# Gpt-Pdfable!
+# gpt-pdfable!
