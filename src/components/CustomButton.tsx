@@ -44,7 +44,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({ variant = 'primary', childr
       };
       break;
     default:
-      // Primary
       buttonStyles = {
         backgroundColor: 'rgb(111, 76, 255)',
         borderColor: 'rgb(111, 76, 255)',

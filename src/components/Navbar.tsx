@@ -2,12 +2,37 @@ import { Flex, Box } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Text } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/pdfable', label: 'Pdfable' },
+  { href: '/', label: 'home' },
+  { href: '/about', label: 'about' },
+  { href: '/pdfable', label: 'pdfable' },
 ];
+
+const underlineAnimation = css`
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; // adjust this to increase or decrease the space between the text and underline
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+`;
+
+const activeLinkStyle = css`
+  ${underlineAnimation}
+  &::after {
+    width: 100%;
+  }
+`;
 
 const Navbar = () => {
   const { pathname } = useRouter();
@@ -29,12 +54,12 @@ const Navbar = () => {
         {links.map(({ href, label }, index) => (
           <Box key={index} mx="4">
             <Link href={href}>
-                <Text
-                  textDecor={pathname === href ? 'underline' : ''}
-                  textStyle={pathname === href ? 'glow' : ''}
-                >
-                  {label}
-                </Text>
+              <Text
+                css={pathname === href ? activeLinkStyle : underlineAnimation}
+                textStyle={pathname === href ? 'glow' : ''}
+              >
+                {label}
+              </Text>
             </Link>
           </Box>
         ))}
