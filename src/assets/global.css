@@ -1,0 +1,49 @@
+.generated-html-wrapper h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.generated-html-wrapper p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.generated-html-wrapper img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.generated-html-wrapper h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.generated-html-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.generated-html-wrapper th,
+.generated-html-wrapper td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.generated-html-wrapper th {
+  font-weight: bold;
+}
+
+.generated-html-wrapper h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+

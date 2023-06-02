@@ -1,13 +1,24 @@
-import { Text, Container, Textarea, VStack, useToast, Box } from '@chakra-ui/react'
-import CustomButton from '@/components/CustomButton'
-import { useState } from 'react'
-import axios from 'axios'
+import { Text, Container, Textarea, VStack, useToast, Box } from '@chakra-ui/react';
+import CustomButton from '@/components/CustomButton';
+import { useState } from 'react';
+import axios from 'axios';
+
+const MAX_CHAR_LIMIT = 500;
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [generatedHtml, setGeneratedHtml] = useState('');
+  const [charCount, setCharCount] = useState(0);
   const toast = useToast();
+
+  const handleTextareaChange = (e: any) => {
+    const input = e.target.value;
+    if (input.length <= MAX_CHAR_LIMIT) {
+      setPrompt(input);
+      setCharCount(input.length);
+    }
+  }
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -43,12 +54,17 @@ export default function Home() {
             borderColor="gray.400"
             boxShadow="md"
             value={prompt}
-            onChange={e => setPrompt(e.target.value)}
+            onChange={handleTextareaChange}
+            maxLength={MAX_CHAR_LIMIT}
+            required
           />
-          <CustomButton variant='gradient' isLoading={isLoading} onClick={handleClick}>
+          <Text color={charCount > MAX_CHAR_LIMIT ? "red" : "black"}>
+            {charCount}/{MAX_CHAR_LIMIT} characters
+          </Text>
+          <CustomButton variant='gradient' isLoading={isLoading} onClick={handleClick} isDisabled={!prompt.trim() || charCount > MAX_CHAR_LIMIT}>
             Submit
           </CustomButton>
-          <Box dangerouslySetInnerHTML={{ __html: generatedHtml }} />
+          <div className="generated-html-wrapper" dangerouslySetInnerHTML={{ __html: generatedHtml }} />
         </VStack>
       </Container>
     </>

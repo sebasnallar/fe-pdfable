@@ -59,7 +59,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({ variant = 'primary', childr
       fontFamily="'DM Sans', sans-serif"
       fontSize='18px'
       padding='12px 32px'
-      margin='1rem'
       borderRadius='50px'
       transition='all 0.3s ease'
       {...buttonStyles}
